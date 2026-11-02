@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#10091d">
+<title>Project 1609 ✦</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+:root{--pink:#ff75b5;--rose:#ff4f9a;--lilac:#c6a0ff;--text:#fff3fb;--muted:#d0bdd4;--panel:#21152f;--line:#674267}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;font-family:'Cairo',system-ui,sans-serif}
+body{background:#10091d;color:var(--text);overflow-x:hidden}
+button,input{font:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+#app{min-height:100svh;position:relative;isolation:isolate;overflow:hidden;background:radial-gradient(ellipse at 50% 0%,#422044 0%,#1b102b 42%,#10091d 82%)}
+#app:before,#app:after{content:"";position:fixed;z-index:-1;border-radius:50%;filter:blur(65px);opacity:.28;pointer-events:none}
+#app:before{width:240px;height:240px;background:#d53e91;top:8%;left:-100px}
+#app:after{width:260px;height:260px;background:#7048d7;bottom:0;right:-130px}
+.topbar{width:min(680px,92%);margin:auto;padding:calc(16px + env(safe-area-inset-top)) 0 10px;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.brand{font-weight:900;letter-spacing:.08em;color:#ffd5ec;font-size:.88rem}
+.sound{border:1px solid #80527b;background:#2b1a38;color:#ffe7f4;border-radius:999px;padding:8px 13px;font-size:.8rem}
+main{width:min(680px,92%);margin:auto;min-height:calc(100svh - 65px);display:flex;align-items:center;justify-content:center;padding:20px 0 42px}
+.screen{width:100%;text-align:center;animation:appear .65s ease both}
+@keyframes appear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.kicker{display:inline-flex;align-items:center;gap:7px;border:1px solid #70476d;background:#281831b8;border-radius:999px;padding:6px 13px;color:#f7c6e3;font-size:.76rem}
+h1{font-size:clamp(2rem,8vw,3.5rem);line-height:1.25;margin:18px 0 10px;font-weight:900}
+h2{font-size:clamp(1.5rem,6vw,2.2rem);margin:10px 0}
+p{color:var(--muted);line-height:1.9;margin:8px auto;max-width:490px}
+.glow{color:#ff9dcb;text-shadow:0 0 18px #ff4c9b80}
+.card{width:min(460px,100%);margin:24px auto 0;padding:clamp(20px,5vw,30px);border:1px solid #71466d;border-radius:27px;background:linear-gradient(145deg,#2b1a3adf,#1c1229ed);box-shadow:0 20px 60px #0005,inset 0 1px #ffffff12}
+.code-input{width:100%;height:58px;text-align:center;direction:ltr;letter-spacing:.45em;font-size:1.5rem;font-weight:800;color:white;background:#130d20;border:1px solid #98618c;border-radius:16px;outline:none;margin:14px 0}
+.code-input:focus{border-color:#ff86c2;box-shadow:0 0 0 3px #ff75b526}
+.btn{border:0;border-radius:999px;padding:13px 24px;background:linear-gradient(100deg,#ff6fae,#c76bdb);color:#210e27;font-weight:900;box-shadow:0 8px 24px #d84e9b3d;min-height:48px;transition:transform .18s,filter .18s}
+.btn:active{transform:scale(.96)}
+.btn.secondary{background:#382342;color:#ffe9f5;border:1px solid #875a81;box-shadow:none}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.feedback{min-height:30px;margin-top:12px;color:#ffb9d9;font-weight:700;font-size:.92rem}
+.progress{display:flex;gap:6px;justify-content:center;margin:0 auto 22px}
+.progress span{height:5px;width:34px;border-radius:99px;background:#4a3453}
+.progress span.active{background:linear-gradient(90deg,#ff76b6,#c18aff);box-shadow:0 0 12px #ff76b680}
+.question{font-size:clamp(1.5rem,6vw,2.15rem);font-weight:900;direction:ltr;color:#fff;margin:14px 0 5px}
+.hint{font-size:.88rem;color:#cbb6ce}
+.tiles{display:flex;direction:ltr;justify-content:center;flex-wrap:wrap;gap:9px;margin:22px auto 16px;max-width:340px}
+.tile{width:43px;height:48px;border-radius:12px;border:1px solid #a66b9c;background:linear-gradient(145deg,#57315b,#30203e);color:#fff;font-weight:900;font-size:1.2rem;box-shadow:0 5px 12px #0003}
+.tile:disabled{opacity:.25;transform:scale(.92)}
+.answer{direction:ltr;min-height:56px;display:flex;justify-content:center;align-items:center;gap:7px;margin:10px auto 17px}
+.slot{width:38px;height:44px;border-radius:10px;border:1px dashed #a875a3;background:#160f22;color:#ffd4eb;display:grid;place-items:center;font-size:1.1rem;font-weight:900}
+.row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.small{font-size:.78rem;color:#bba5c2}
+.stage3 .card{overflow:hidden}
+.choice-row{display:flex;justify-content:center;gap:14px;align-items:center;min-height:90px;position:relative;margin-top:18px}
+.yes{min-width:118px}
+.no{background:#34213d;color:#ffe7f4;border:1px solid #8a5b80;box-shadow:none;min-width:118px;position:relative;z-index:2}
+.tease{min-height:48px;color:#ffafd2;font-weight:800;margin-top:14px}
+.final-screen{width:100%;min-height:70svh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative}
+.final-screen h1{font-size:clamp(2.8rem,12vw,5rem);margin:0;text-shadow:0 0 25px #ff5da9a0}
+.final-sub{font-size:clamp(1.1rem,4vw,1.45rem);color:#ffe0f0;margin-top:12px;text-shadow:0 0 14px #ff72b8a0}
+.rose-wrap{width:min(82vw,430px);aspect-ratio:1;display:grid;place-items:center;position:relative;margin:0 auto 8px;filter:drop-shadow(0 0 25px #ff4da877)}
+.rose-svg{width:100%;height:100%;overflow:visible;animation:roseIn 2s cubic-bezier(.2,.8,.2,1) both}
+@keyframes roseIn{0%{opacity:0;transform:scale(.12) rotate(-35deg);filter:blur(12px)}65%{opacity:1;transform:scale(1.08) rotate(5deg);filter:blur(0)}100%{transform:scale(1) rotate(0)}}
+.petals{transform-origin:200px 200px;animation:bloom 2.5s 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes bloom{from{transform:scale(.25)}to{transform:scale(1)}}
+.final-screen:before{content:"";position:absolute;width:80vw;height:80vw;max-width:480px;max-height:480px;border-radius:50%;background:radial-gradient(circle,#e64eaa38,transparent 68%);z-index:-1;animation:pulse 4s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.13);opacity:.6}}
+.star{position:absolute;color:#ffe0fa;text-shadow:0 0 12px #ff8ee3;animation:twinkle 2s ease-in-out infinite alternate;pointer-events:none}
+@keyframes twinkle{from{opacity:.25;transform:scale(.7)}to{opacity:1;transform:scale(1.2)}}
+.final-note{font-size:.82rem;color:#cdb6d3;margin-top:14px}
+footer{padding:0 0 calc(16px + env(safe-area-inset-bottom));text-align:center;color:#8f769a;font-size:.72rem}
+@media(max-width:380px){.tile{width:39px;height:44px}.slot{width:34px;height:40px}.card{padding:18px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div id="app">
+  <header class="topbar">
+    <div class="brand">✦ PROJECT 1609</div>
+    <button class="sound" id="soundToggle" type="button" aria-label="تشغيل أو إيقاف الصوت">♫ الصوت: مغلق</button>
+  </header>
+  <main id="main" aria-live="polite"></main>
+  <footer>صُنع بقليل من الحب… وكثير من الجنون ♡</footer>
+</div>
+<script>
+(() => {
+  const main = document.getElementById('main');
+  const soundToggle = document.getElementById('soundToggle');
+  let soundOn = false, audioCtx = null, stage = 0, questionIndex = 0;
+  const answers = [
+    {q:'jam3 mngouli?', answer:'mnagl', letters:['g','m','a','l','n']},
+    {q:'chek?', answer:'agherdha', letters:['h','a','d','g','a','r','h','e']},
+    {q:'afdal makla 3ndi?', answer:'ana', letters:['n','a','a']}
+  ];
+  const progress = (active) => `<div class="progress" aria-label="تقدم المراحل">${[1,2,3,4].map(n=>`<span class="${n<=active?'active':''}"></span>`).join('')}</div>`;
+  function tone(freq=600,duration=.12,type='sine',volume=.045){
+    if(!soundOn) return;
+    try{
+      audioCtx ||= new (window.AudioContext||window.webkitAudioContext)();
+      if(audioCtx.state==='suspended') audioCtx.resume();
+      const osc=audioCtx.createOscillator(), gain=audioCtx.createGain();
+      osc.type=type; osc.frequency.setValueAtTime(freq,audioCtx.currentTime);
+      gain.gain.setValueAtTime(volume,audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+duration);
+      osc.connect(gain);gain.connect(audioCtx.destination);osc.start();osc.stop(audioCtx.currentTime+duration);
+    }catch(e){}
+  }
+  function successSound(){tone(523,.12);setTimeout(()=>tone(659,.14),100);setTimeout(()=>tone(784,.22),210)}
+  function errorSound(){tone(180,.18,'triangle');setTimeout(()=>tone(130,.22,'triangle'),110)}
+  soundToggle.addEventListener('click',()=>{
+    soundOn=!soundOn;soundToggle.textContent=`♫ الصوت: ${soundOn?'مفتوح':'مغلق'}`;
+    if(soundOn){tone(660,.12);if(audioCtx?.state==='suspended')audioCtx.resume();}
+  });
+  function renderCode(){
+    stage=1;
+    main.innerHTML=`<section class="screen">
+      ${progress(1)}
+      <div class="kicker">✦ مكان سري لشخص مميز</div>
+      <h1>أهلاً بكِ في<br><span class="glow">عالمكِ الخاص</span></h1>
+      <p>قبل أن تفتحي هذا الباب… عليكِ إثبات أنكِ الشخص المقصود. أدخلي الرمز السري.</p>
+      <div class="card">
+        <div style="font-size:2.2rem">🔐</div>
+        <div class="small">SECRET ACCESS CODE</div>
+        <input class="code-input" id="code" inputmode="numeric" autocomplete="off" maxlength="4" placeholder="••••" aria-label="الرمز السري">
+        <button class="btn" id="enter">افتحي الباب ♡</button>
+        <div class="feedback" id="codeFeedback"></div>
+      </div>
+    </section>`;
+    const input=document.getElementById('code'), btn=document.getElementById('enter');
+    btn.addEventListener('click',check);input.addEventListener('keydown',e=>{if(e.key==='Enter')check()});
+    function check(){
+      if(input.value==='1609'){successSound();document.getElementById('codeFeedback').textContent='الرمز صحيح… الباب يُفتح! ✨';btn.disabled=true;setTimeout(renderQuestion,850);}
+      else{errorSound();document.getElementById('codeFeedback').textContent='هممم… هذا ليس الرمز الصحيح. حاولي مجدداً 😜';input.value='';input.focus();}
+    }
+  }
+  function renderQuestion(){
+    stage=2; questionIndex=0; renderPuzzle();
+  }
+  function renderPuzzle(){
+    const item=answers[questionIndex];let chosen=[];
+    main.innerHTML=`<section class="screen">
+      ${progress(2)}
+      <div class="kicker">🧩 المرحلة الثانية · رتّبي الحروف</div>
+      <h2>خلينا نشوفو شطارتك!</h2>
+      <p>اختاري الحروف بالترتيب الصحيح لتجدي الإجابة.</p>
+      <div class="card">
+        <div class="small">السؤال ${questionIndex+1} من 3</div>
+        <div class="question">${item.q}</div>
+        <div class="answer" id="answerSlots" dir="ltr"></div>
+        <div class="tiles" id="tiles" dir="ltr"></div>
+        <div class="row">
+          <button class="btn secondary" id="undo">رجّعي حرف ↶</button>
+          <button class="btn" id="checkAnswer">تحققي ✓</button>
+        </div>
+        <div class="feedback" id="puzzleFeedback"></div>
+      </div>
+    </section>`;
+    const slots=document.getElementById('answerSlots'), tiles=document.getElementById('tiles');
+    function draw(){
+      slots.innerHTML=Array.from({length:item.answer.length},(_,i)=>`<div class="slot">${chosen[i]===undefined?'':item.letters[chosen[i]]}</div>`).join('');
+      tiles.innerHTML=item.letters.map((letter,i)=>`<button class="tile" type="button" data-i="${i}" ${chosen.includes(i)?'disabled':''}>${letter}</button>`).join('');
+      tiles.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{if(chosen.length<item.answer.length){chosen.push(Number(b.dataset.i));tone(500+chosen.length*45,.07,'sine',.035);draw();}}));
+    }
+    draw();
+    document.getElementById('undo').addEventListener('click',()=>{chosen.pop();tone(300,.08);draw()});
+    document.getElementById('checkAnswer').addEventListener('click',()=>{
+      const value=chosen.map(i=>item.letters[i]).join('');
+      const feedback=document.getElementById('puzzleFeedback');
+      if(value===item.answer){
+        successSound();feedback.textContent='برافووو! إجابة صحيحة 💗';
+        document.getElementById('checkAnswer').disabled=true;
+        setTimeout(()=>{if(questionIndex<2){questionIndex++;renderPuzzle()}else{renderYesNo()}},850);
+      }else{errorSound();feedback.textContent=chosen.length!==item.answer.length?'مازال كاين حروف! كمّلي الإجابة 😉':'قريبة… بصح رتّبي الحروف مليح 😂';}
+    });
+  }
+  function renderYesNo(){
+    stage=3;
+    main.innerHTML=`<section class="screen stage3">
+      ${progress(3)}
+      <div class="kicker">💗 المرحلة الثالثة · سؤال مصيري</div>
+      <h1>بصح…</h1>
+      <div class="card">
+        <div style="font-size:3rem">🥺</div>
+        <h2>هل تحبينني؟</h2>
+        <p>اختاري إجابتك بعناية… راهي قضية مهمة جداً! 😌</p>
+        <div class="choice-row" id="choiceArea">
+          <button class="btn yes" id="yes">نعم ❤️</button>
+          <button class="btn no" id="no">لا 🙄</button>
+        </div>
+        <div class="tease" id="tease" aria-live="polite"></div>
+      </div>
+    </section>`;
+    const no=document.getElementById('no'), area=document.getElementById('choiceArea'), tease=document.getElementById('tease');
+    let escapes=0;
+    function flee(e){
+      if(e)e.preventDefault();
+      escapes++;
+      const maxX=Math.max(0,area.clientWidth/2-65), maxY=28;
+      const x=(Math.random()*2-1)*maxX, y=(Math.random()*2-1)*maxY;
+      no.style.transform=`translate(${x}px,${y}px) rotate(${Math.random()*18-9}deg)`;
+      const lines=['لا لا، هذي الإجابة ممنوعة 😂','الزر راهو خايف يجاوب!','حتى زر «لا» ما حبّش يقولها 😭','حاولي مع «نعم»، راهي أسهل!','يا لطيف، الزر هرب منكِ! 🏃‍♂️'];
+      tease.textContent=lines[(escapes-1)%lines.length];tone(260,.1,'triangle');
+    }
+    no.addEventListener('pointerdown',flee);
+    no.addEventListener('click',flee);
+    no.addEventListener('pointerenter',flee);
+    document.getElementById('yes').addEventListener('click',()=>{successSound();renderRose()});
+  }
+  function renderRose(){
+    stage=4;
+    main.innerHTML=`<section class="screen final-screen">
+      ${progress(4)}
+      <div class="kicker">✦ وصلتي للمفاجأة ✦</div>
+      <div class="rose-wrap" aria-label="وردة سحرية كبيرة متعددة الألوان">
+        <svg class="rose-svg" viewBox="0 0 400 440" role="img" aria-label="وردة متوهجة متعددة الألوان">
+          <defs>
+            <linearGradient id="petal1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#ff4d9d"/><stop offset=".48" stop-color="#b66bff"/><stop offset="1" stop-color="#55d8ff"/></linearGradient>
+            <linearGradient id="petal2" x1="0" y1="1" x2="1" y2="0"><stop stop-color="#ffcf5c"/><stop offset=".45" stop-color="#ff5eaa"/><stop offset="1" stop-color="#9b68ff"/></linearGradient>
+            <linearGradient id="petal3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#7df5d2"/><stop offset=".5" stop-color="#4c9dff"/><stop offset="1" stop-color="#d47aff"/></linearGradient>
+            <radialGradient id="center"><stop stop-color="#fff9b0"/><stop offset=".45" stop-color="#ffb34f"/><stop offset="1" stop-color="#ff5a9e"/></radialGradient>
+            <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          </defs>
+          <g class="petals" filter="url(#glow)" stroke="#fff8" stroke-width="2">
+            <path d="M200 210 C95 175 100 60 190 35 C260 18 292 103 200 210Z" fill="url(#petal1)"/>
+            <path d="M200 210 C300 150 370 220 338 292 C310 356 230 310 200 210Z" fill="url(#petal2)"/>
+            <path d="M200 210 C170 330 65 340 38 270 C12 202 103 155 200 210Z" fill="url(#petal3)"/>
+            <path d="M200 210 C130 120 190 48 260 75 C330 102 290 190 200 210Z" fill="url(#petal2)"/>
+            <path d="M200 210 C305 190 345 275 285 328 C225 380 170 300 200 210Z" fill="url(#petal1)"/>
+            <path d="M200 210 C105 270 40 210 75 140 C110 70 185 120 200 210Z" fill="url(#petal2)"/>
+            <path d="M200 210 C175 105 250 65 300 120 C350 175 275 230 200 210Z" fill="url(#petal3)"/>
+            <path d="M200 210 C240 310 160 365 105 315 C50 265 125 205 200 210Z" fill="url(#petal1)"/>
+            <path d="M200 210 C135 165 165 105 215 112 C270 120 252 180 200 210Z" fill="url(#center)"/>
+            <path d="M200 210 C225 170 270 190 255 225 C242 257 205 245 200 210Z" fill="#ffe78b"/>
+          </g>
+          <path d="M202 285 C205 335 202 370 198 408" fill="none" stroke="#68d89a" stroke-width="12" stroke-linecap="round"/>
+          <path d="M198 350 C145 305 115 335 150 365 C172 384 190 371 198 350Z" fill="#4dd69a" stroke="#a5ffd0" stroke-width="2"/>
+          <path d="M201 375 C245 330 285 350 255 380 C235 399 212 391 201 375Z" fill="#35bd83" stroke="#a5ffd0" stroke-width="2"/>
+        </svg>
+      </div>
+      <h1 class="glow">هكذا أراكِ</h1>
+      <div class="final-sub">مليئة بالألوان… ومختلفة عن الجميع. 🌹</div>
+      <div class="final-note">كل لون فيكِ حكاية جميلة، وكل حكاية أحبها.</div>
+      <button class="sound" id="musicToggle" style="margin-top:20px">♫ ${soundOn?'إيقاف':'تشغيل'} موسيقى هادئة</button>
+    </section>`;
+    addStars();
+    document.getElementById('musicToggle').addEventListener('click',toggleMusic);
+    if(soundOn)successSound();
+  }
+  let musicTimer=null, musicStep=0;
+  function toggleMusic(){
+    const b=document.getElementById('musicToggle');
+    if(musicTimer){clearInterval(musicTimer);musicTimer=null;b.textContent='♫ تشغيل موسيقى هادئة';return;}
+    soundOn=true;soundToggle.textContent='♫ الصوت: مفتوح';
+    const notes=[523,659,784,659,587,698,880,698];
+    musicTimer=setInterval(()=>{tone(notes[musicStep++%notes.length],.42,'sine',.018)},520);
+    b.textContent='♫ إيقاف الموسيقى';
+  }
+  function addStars(){
+    const s=document.querySelector('.final-screen');
+    for(let i=0;i<22;i++){const star=document.createElement('span');star.className='star';star.textContent=['✦','·','✧','✶'][i%4];star.style.left=(4+Math.random()*92)+'%';star.style.top=(5+Math.random()*88)+'%';star.style.fontSize=(10+Math.random()*19)+'px';star.style.animationDelay=(Math.random()*2)+'s';s.appendChild(star);}
+  }
+  renderCode();
+})();
+</script>
+</body>
+</html>
