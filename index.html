@@ -113,9 +113,9 @@ footer{padding:0 0 calc(16px + env(safe-area-inset-bottom));text-align:center;co
     stage=1;
     main.innerHTML=`<section class="screen">
       ${progress(1)}
-      <div class="kicker">✦ مكان سري لشخص مميز</div>
-      <h1>أهلاً بكِ في<br><span class="glow">عالمكِ الخاص</span></h1>
-      <p>قبل أن تفتحي هذا الباب… عليكِ إثبات أنكِ الشخص المقصود. أدخلي الرمز السري.</p>
+      <div class="kicker">✦ سيت ليك أ عمري</div>
+      <h1>مرحبا بيك<br><span class="glow">فالموند ديالك</span></h1>
+      <p>قبل ماتفوتي لازم دخلي الكود الصحيح هنا</p>
       <div class="card">
         <div style="font-size:2.2rem">🔐</div>
         <div class="small">SECRET ACCESS CODE</div>
@@ -127,8 +127,8 @@ footer{padding:0 0 calc(16px + env(safe-area-inset-bottom));text-align:center;co
     const input=document.getElementById('code'), btn=document.getElementById('enter');
     btn.addEventListener('click',check);input.addEventListener('keydown',e=>{if(e.key==='Enter')check()});
     function check(){
-      if(input.value==='1609'){successSound();document.getElementById('codeFeedback').textContent='الرمز صحيح… الباب يُفتح! ✨';btn.disabled=true;setTimeout(renderQuestion,850);}
-      else{errorSound();document.getElementById('codeFeedback').textContent='هممم… هذا ليس الرمز الصحيح. حاولي مجدداً 😜';input.value='';input.focus();}
+      if(input.value==='1609'){successSound();document.getElementById('codeFeedback').textContent='الكود صحيح… الباب يتفتح! ✨';btn.disabled=true;setTimeout(renderQuestion,850);}
+      else{errorSound();document.getElementById('codeFeedback').textContent='هممم… غاااااالط. زيدي سيي 😜';input.value='';input.focus();}
     }
   }
   function renderQuestion(){
@@ -140,7 +140,7 @@ footer{padding:0 0 calc(16px + env(safe-area-inset-bottom));text-align:center;co
       ${progress(2)}
       <div class="kicker">🧩 المرحلة الثانية · رتّبي الحروف</div>
       <h2>خلينا نشوفو شطارتك!</h2>
-      <p>اختاري الحروف بالترتيب الصحيح لتجدي الإجابة.</p>
+      <p>اختاري الحروف بالترتيب الصحيح .</p>
       <div class="card">
         <div class="small">السؤال ${questionIndex+1} من 3</div>
         <div class="question">${item.q}</div>
@@ -148,7 +148,7 @@ footer{padding:0 0 calc(16px + env(safe-area-inset-bottom));text-align:center;co
         <div class="tiles" id="tiles" dir="ltr"></div>
         <div class="row">
           <button class="btn secondary" id="undo">رجّعي حرف ↶</button>
-          <button class="btn" id="checkAnswer">تحققي ✓</button>
+          <button class="btn" id="checkAnswer">سيي ✓</button>
         </div>
         <div class="feedback" id="puzzleFeedback"></div>
       </div>
@@ -180,7 +180,7 @@ footer{padding:0 0 calc(16px + env(safe-area-inset-bottom));text-align:center;co
       <div class="card">
         <div style="font-size:3rem">🥺</div>
         <h2>هل تحبينني؟</h2>
-        <p>اختاري إجابتك بعناية… راهي قضية مهمة جداً! 😌</p>
+        <p>تغلطي نيكك. اه نسيت تحبيني كي نيكك هههه! 😌</p>
         <div class="choice-row" id="choiceArea">
           <button class="btn yes" id="yes">نعم ❤️</button>
           <button class="btn no" id="no">لا 🙄</button>
@@ -196,7 +196,7 @@ footer{padding:0 0 calc(16px + env(safe-area-inset-bottom));text-align:center;co
       const maxX=Math.max(0,area.clientWidth/2-65), maxY=28;
       const x=(Math.random()*2-1)*maxX, y=(Math.random()*2-1)*maxY;
       no.style.transform=`translate(${x}px,${y}px) rotate(${Math.random()*18-9}deg)`;
-      const lines=['لا لا، هذي الإجابة ممنوعة 😂','الزر راهو خايف يجاوب!','حتى زر «لا» ما حبّش يقولها 😭','حاولي مع «نعم»، راهي أسهل!','يا لطيف، الزر هرب منكِ! 🏃‍♂️'];
+      const lines=['يا دنيا علاش 😂','الزر راهو خايف يجاوب!','حتى زر «لا» ما حبّش يقولها 😭','حاولي مع «نعم»، راهي أسهل!','يا لطيف، الزر هرب منكِ! 🏃‍♂️'];
       tease.textContent=lines[(escapes-1)%lines.length];tone(260,.1,'triangle');
     }
     no.addEventListener('pointerdown',flee);
@@ -235,9 +235,9 @@ footer{padding:0 0 calc(16px + env(safe-area-inset-bottom));text-align:center;co
           <path d="M201 375 C245 330 285 350 255 380 C235 399 212 391 201 375Z" fill="#35bd83" stroke="#a5ffd0" stroke-width="2"/>
         </svg>
       </div>
-      <h1 class="glow">هكذا أراكِ</h1>
-      <div class="final-sub">مليئة بالألوان… ومختلفة عن الجميع. 🌹</div>
-      <div class="final-note">كل لون فيكِ حكاية جميلة، وكل حكاية أحبها.</div>
+      <h1 class="glow">هكذا نشوفك</h1>
+      <div class="final-sub">nhabaak omry 🌹</div>
+      <div class="final-note">mknch kifk w jms ra7 tkoun.</div>
       <button class="sound" id="musicToggle" style="margin-top:20px">♫ ${soundOn?'إيقاف':'تشغيل'} موسيقى هادئة</button>
     </section>`;
     addStars();
@@ -247,11 +247,11 @@ footer{padding:0 0 calc(16px + env(safe-area-inset-bottom));text-align:center;co
   let musicTimer=null, musicStep=0;
   function toggleMusic(){
     const b=document.getElementById('musicToggle');
-    if(musicTimer){clearInterval(musicTimer);musicTimer=null;b.textContent='♫ تشغيل موسيقى هادئة';return;}
+    if(musicTimer){clearInterval(musicTimer);musicTimer=null;b.textContent='♫ musique';return;}
     soundOn=true;soundToggle.textContent='♫ الصوت: مفتوح';
     const notes=[523,659,784,659,587,698,880,698];
     musicTimer=setInterval(()=>{tone(notes[musicStep++%notes.length],.42,'sine',.018)},520);
-    b.textContent='♫ إيقاف الموسيقى';
+    b.textContent='♫ musique';
   }
   function addStars(){
     const s=document.querySelector('.final-screen');
